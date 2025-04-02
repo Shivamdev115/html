@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:  pink;
+        }
+        button {
+    padding: 15px;
+    font-size: 1.2em;
+    border: none;
+    background:black;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.display{
+    height: 50px;
+    width: 175px;
+    border: 2px solid black;
+    text-align: center;
+    align-items: center;
+    
+}
+.output{
+    margin-left: 80px;
+}
+.main{
+    margin-left: 700px;
+    margin-top: 200px;
+}
+    </style>
+</head>
+<body><div class="main">
+    <div class="display">
+        <p id="output">0</p>
+    </div>
+    <div class="container">
+        <div class="firstRow">
+            <button>0</button>
+            <button>1</button>
+            <button>2</button>
+            <button style="background-color: #FD9807;">+</button>
+        </div>
+        <div class="secondRow">
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button style="background-color: #FD9807;">-</button>
+        </div>
+        <div class="thirdRow">
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button style="background-color: #FD9807;">*</button>
+        </div>
+        <div class="fourthRow">
+            <button>9</button>
+            <button style="background-color: #FD9807;">%</button>
+            <button style="background-color: #FD9807;">=</button>
+            <button style="background-color:  #FD9807;">AC</button>
+        </div>
+    </div>
+</div>
+<SCript>
+    document.addEventListener("DOMContentLoaded", function () {
+    let output = document.getElementById("output");
+    let buttons = document.querySelectorAll("button");
+    let currentInput = "";
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
+            let value = this.textContent;
+
+            if (value === "AC") {
+                currentInput = "";
+            } else if (value === "=") {
+                try {
+                    currentInput = eval(currentInput).toString();
+                } catch {
+                    currentInput = "Error";
+                }
+            } else {
+                currentInput += value;
+            }
+
+            output.textContent = currentInput || "0";
+        });
+    });
+});
+
+</SCript>
+</body>
+</html>
